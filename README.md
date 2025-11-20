@@ -16,19 +16,8 @@ Runs entirely on your laptop with zero cloud dependencies.
 ## Architecture
 
 ```
-Binance API
-    ↓
-Python Extract
-    ↓
-DuckDB Raw Layer (raw_btc_daily)
-    ↓
-DuckDB Mart Layer (fact_btc_daily)
-    ↓
-Parquet Export
-    ↓
-Power BI Dashboard
-    ↑
-Prefect Orchestration Controls All Steps
+<img width="1341" height="375" alt="image" src="https://github.com/user-attachments/assets/299b3241-ac9d-42d4-b920-abef94fc9dba" />
+
 ```
 
 ---
