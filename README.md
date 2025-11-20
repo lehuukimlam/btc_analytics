@@ -16,8 +16,7 @@ Runs entirely on your laptop with zero cloud dependencies.
 ## Architecture
 
 ```
-<img width="1341" height="375" alt="image" src="https://github.com/user-attachments/assets/299b3241-ac9d-42d4-b920-abef94fc9dba" />
-
+ 
 ```
 
 ---
@@ -82,56 +81,10 @@ This executes:
 Power BI connects to the exported Parquet file.
 Refreshing the report always loads the latest data.
 
----
-
-## 1.4 Prefect UI (Optional)
-
-When the flow runs, Prefect starts a temporary local server, typically at:
-
-```text
-http://127.0.0.1:8090
-```
-
-Use this UI to inspect:
-
-- Flow runs  
-- Task logs  
-- Success/failure states  
-
-Refer to Prefect docs for running a dedicated server if needed.
 
 ---
 
-## 1.5 Access DuckDB
-
-### Using DuckDB CLI
-
-Install DuckDB CLI (example with winget):
-
-```powershell
-winget install DuckDB.cli
-```
-
-Launch:
-
-```powershell
-duckdb -ui
-```
-
-Attach the project database:
-
-```sql
-ATTACH 'data/btc_analytics.duckdb';
-```
-
-You can now query:
-
-- `raw_btc_daily`
-- `fact_btc_daily`
-
----
-
-## 1.6 Connect Power BI
+## 1.4 Connect Power BI
 
 Use the single exported Parquet file:
 
