@@ -13,17 +13,17 @@ Output: Single Parquet file refreshed by the pipeline
 
 Architecture
 Binance API
-    ?
+    ↓
 Python Extract
-    ?
+    ↓
 DuckDB Raw Layer (raw_btc_daily)
-    ?
+    ↓
 DuckDB Mart Layer (fact_btc_daily)
-    ?
+    ↓
 Parquet Export
-    ?
+    ↓
 Power BI Dashboard
-    ?
+    ↑
 Prefect Orchestration Controls All Steps
 
 1. Quick Start
@@ -44,10 +44,10 @@ pip install requests pandas duckdb prefect
 Project structure:
 
 btc_analytics/
-?
-??? data/
-??? src/
-??? orchestrations/
+│
+├── data/
+├── src/
+└── orchestrations/
 
 1.2 Configuration
 
@@ -122,7 +122,7 @@ btc_analytics/data/fact_btc_daily.parquet
 
 Steps:
 
-Home ? Get Data ? Parquet
+Home → Get Data → Parquet
 
 Select the file
 
