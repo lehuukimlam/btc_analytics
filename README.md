@@ -172,6 +172,4 @@ python src/transform_to_marts.py
 python src/export_for_pbi.py
 ```
 
----
-
 
