@@ -15,10 +15,9 @@ Runs entirely on your laptop with zero cloud dependencies.
 
 ## Architecture
 
-```
+
 ![Pipeline Architecture](assets/Flow.png)
 
-```
 
 ---
 
@@ -114,6 +113,7 @@ python src/load_to_duckdb.py
 python src/transform_to_marts.py
 python src/export_for_pbi.py
 ```
+
 
 
 
