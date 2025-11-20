@@ -41,7 +41,7 @@ Create a virtual environment:
 
 ```powershell
 python -m venv .venv
-.\.venv\Scriptsctivate.ps1
+.\.venv\Scripts\activate.ps1
 ```
 
 Install dependencies:
@@ -174,26 +174,4 @@ python src/export_for_pbi.py
 
 ---
 
-# 3. Requirements
 
-Install with:
-
-```powershell
-pip install -r requirements.txt
-```
-
-Example `requirements.txt`:
-
-```text
-requests>=2.31.0
-pandas>=2.2.0
-duckdb>=0.9.2
-prefect>=3.0.0
-pyarrow>=15.0.0
-```
-
----
-
-# 4. License
-
-Add your chosen license details in a `LICENSE` file.
