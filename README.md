@@ -107,4 +107,3 @@ Because the pipeline overwrites the same file each run, no manual file changes a
 
 Once loaded in Power BI, you can build your own visuals or refer to the powerbi/ folder in this repository, which contains report screenshots and a short summary of the exploratory analysis performed on the dataset.
 
-```
