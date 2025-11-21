@@ -103,16 +103,12 @@ Because the pipeline overwrites the same file each run, no manual file changes a
 
 ---
 
-# 2. Manual Development Commands
+## 1.5 Devire some findings
 
-Run components individually (without Prefect):
+Once loaded in Power BI, you can build your own visuals or refer to the powerbi/ folder in this repository, which contains report screenshots and a short summary of the exploratory analysis performed on the dataset.
 
-```powershell
-python src/fetch_btc_raw.py
-python src/load_to_duckdb.py
-python src/transform_to_marts.py
-python src/export_for_pbi.py
 ```
+
 
 
 
