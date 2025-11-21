@@ -103,7 +103,7 @@ Steps:
 
 ## 1.5 Derive findings
 
-After loading into Power BI, build visualisations or check the optional `powerbi/` folder (if included) for screenshots and summary insights.
+After loading into Power BI, build visualisations or check the optional `powerbi/` folder for screenshots and summary insights.
 
 ---
 
