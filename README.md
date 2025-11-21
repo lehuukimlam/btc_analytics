@@ -18,6 +18,19 @@ Runs entirely on your laptop with zero cloud dependencies.
 
 ![Pipeline Architecture](assets/Flow.png)
 
+The pipeline runs in four stages:
+
+1. **Extract**  
+   Pull OHLCV candles for BTC/USDT from the Binance API.
+
+2. **Load**  
+   Store raw data in a DuckDB database (`btc.duckdb`) under a `raw_btc_daily` table.
+
+3. **Transform**  
+   Build the analytics mart `fact_btc_daily` using SQL models (cleaning, resampling, adding return columns, etc.).
+
+4. **Export**
+   Export `fact_btc_daily` to `data/fact_btc_daily.parquet` for direct consumption in Power BI.
 
 ---
 
@@ -27,10 +40,18 @@ Runs entirely on your laptop with zero cloud dependencies.
 
 Create a virtual environment:
 
-```powershell
+**Windows (PowerShell):**
+
+```bash
 python -m venv .venv
-.\.venv\Scripts\activate.ps1
+.\.venv\Scripts\Activate.ps1
 ```
+**macOS / Linux (bash/zsh):**
+
+```python -m venv .venv
+source .venv/bin/activate
+```
+
 
 Install dependencies:
 
@@ -53,62 +74,34 @@ btc_analytics/
 
 ## 1.2 Configuration
 
-All data paths are automatically derived based on the project root using `Path()`.
-No manual configuration is required.
+All data paths are derived from the project root using pathlib.Path. No manual configuration is required.
 
-Optional adjustments:
+Example (inside src/fetch_btc_raw.py):
 
-- Edit `src/fetch_btc_raw.py` to change symbol, interval, or limits.
-- Edit `src/export_for_pbi.py` if you want to export additional marts.
+```from pathlib import Path
 
----
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+DATA_DIR = PROJECT_ROOT / "data"
+DATA_DIR.mkdir(exist_ok=True)
 
-## 1.3 Run the Pipeline
-
-Run the full ETL pipeline using Prefect:
-
-```powershell
-python orchestrations\prefect_flow.py
+DUCKDB_PATH = DATA_DIR / "btc.duckdb"
 ```
 
-This executes:
+To change symbol or interval, edit src/fetch_btc_raw.py:
 
-1. Extract BTC OHLCV from Binance  
-2. Load into DuckDB (`raw_btc_daily`)  
-3. Build mart table (`fact_btc_daily`)  
-4. Export Parquet (`data/fact_btc_daily.parquet`)
+symbol (e.g. "BTCUSDT")
 
-Power BI connects to the exported Parquet file.
-Refreshing the report always loads the latest data.
+interval (e.g. "1d")
 
+limit (number of candles to pull)
 
----
-
-## 1.4 Connect Power BI
-
-Use the single exported Parquet file:
-
-```text
-btc_analytics/data/fact_btc_daily.parquet
-```
-
-Steps in Power BI Desktop:
-
-1. Home → Get Data → Parquet  
-2. Select `data/fact_btc_daily.parquet`  
-3. Load  
-4. Click **Refresh** whenever your pipeline reruns  
-
-Because the pipeline overwrites the same file each run, no manual file changes are needed.
-
----
-
-## 1.5 Devire some findings
+To change which marts get exported, edit src/export_for_pbi.pyDerive some findings
 
 Once loaded in Power BI, you can build your own visuals or refer to the powerbi/ folder in this repository, which contains report screenshots and a short summary of the exploratory analysis performed on the dataset.
 
 ##  License
 
 MIT — feel free to fork, build, or contribute.
+
 
 
